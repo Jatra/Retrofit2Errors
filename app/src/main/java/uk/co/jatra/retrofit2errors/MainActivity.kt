@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers.mainThread
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers.io
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.HttpException
 import uk.co.jatra.retrofit2errors.api.ApiAdapter.Companion.adapter
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         good.setOnClickListener {
             disposables.add(adapter.getNames()
                 .observeOn(mainThread())
-                .subscribeOn(io())
                 .subscribe(
                     { value -> handleData(value) },
                     { error -> handleError(error) }
@@ -36,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         bad.setOnClickListener {
             disposables.add(adapter.badRequest()
                 .observeOn(mainThread())
-                .subscribeOn(io())
                 .subscribe(
                     { value -> handleData(value) },
                     { error -> handleError(error) }
@@ -46,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         notFound.setOnClickListener {
             disposables.add(adapter.notFound()
                 .observeOn(mainThread())
-                .subscribeOn(io())
                 .subscribe(
                     { value -> handleData(value) },
                     { error -> handleError(error) }
@@ -56,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         wrongType.setOnClickListener {
             disposables.add(adapter.wrongType()
                 .observeOn(mainThread())
-                .subscribeOn(io())
                 .subscribe(
                     { value -> handleData(value) },
                     { error -> handleError(error) }
@@ -66,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         notAList.setOnClickListener {
             disposables.add(adapter.defineReturnToBeAListWhenItIsnt()
                 .observeOn(mainThread())
-                .subscribeOn(io())
                 .subscribe(
                     {  },
                     { error -> handleError(error) }
@@ -76,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         notAPrimitve.setOnClickListener {
             disposables.add(adapter.defineReturnToBeABaseTypeWhenItIsAnObject()
                 .observeOn(mainThread())
-                .subscribeOn(io())
                 .subscribe(
                     {  },
                     { error -> handleError(error) }

@@ -1,7 +1,7 @@
 package uk.co.jatra.retrofit2errors.api
 
 import com.google.gson.GsonBuilder
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.schedulers.Schedulers.io
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -37,10 +37,9 @@ class ApiAdapter {
                 .build()
         }
 
-        //Do we need to specify the scheduler?
+        //Specifying the scheduler means we don't have to when making the actual calls.
         private val rxAdapter: RxJava2CallAdapterFactory by lazy {
-            RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io())
-            RxJava2CallAdapterFactory.create()
+            RxJava2CallAdapterFactory.createWithScheduler(io())
         }
     }
 }
