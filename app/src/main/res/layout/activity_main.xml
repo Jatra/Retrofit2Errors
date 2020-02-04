@@ -30,9 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
             android:text="exceptionType"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/responseCode" />
 
@@ -131,5 +129,15 @@
             android:text="Not A Primitive"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/notAList" />
+
+        <TextView
+            android:id="@+id/isIOException"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="IS IOException"
+            app:layout_constraintBottom_toBottomOf="@+id/exceptionType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/exceptionType" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
